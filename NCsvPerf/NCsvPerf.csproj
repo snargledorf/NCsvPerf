@@ -55,4 +55,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="CsvSpanParser">
+      <HintPath>CsvReadable\Implementations\CsvSpanParser\CsvSpanParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

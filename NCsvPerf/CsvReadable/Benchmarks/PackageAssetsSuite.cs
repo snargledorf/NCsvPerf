@@ -110,6 +110,12 @@ namespace Knapcode.NCsvPerf.CsvReadable.TestCases
         }
 
         [Benchmark]
+        public void CsvSpanParser()
+        {
+            Execute(new CsvSpanParser(ActivationMethod.ILEmit));
+        }
+
+        [Benchmark]
         public void Ctl_Data()
         {
             Execute(new Ctl_Data(ActivationMethod.ILEmit));
