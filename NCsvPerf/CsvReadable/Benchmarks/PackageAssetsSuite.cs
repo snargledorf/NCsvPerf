@@ -153,6 +153,12 @@ namespace Knapcode.NCsvPerf.CsvReadable.TestCases
         }
 
         [Benchmark]
+        public void FlexableCsvParser()
+        {
+            Execute(new FlexableCsvParser());
+        }
+
+        [Benchmark]
         public void FluentCSV()
         {
             Execute(new FluentCSV());
