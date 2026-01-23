@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
-using Knapcode.NCsvPerf.CsvReadable.TestCases;
+namespace Knapcode.NCsvPerf.CsvReadable;
 
-namespace Knapcode.NCsvPerf.CsvReadable
+/// <summary>
+/// Package: https://www.nuget.org/packages/FlexableCsvParser
+/// Source: https://github.com/snargledorf/FlexableCsvParser
+/// </summary>
+public class FlexableCsvParser : ICsvReader
 {
-    /// <summary>
-    /// Package: https://www.nuget.org/packages/FlexableCsvParser
-    /// Source: https://github.com/snargledorf/FlexableCsvParser
-    /// </summary>
-    public class FlexableCsvParser : ICsvReader
+    public List<T> GetRecords<T>(MemoryStream stream) where T : ICsvReadable, new()
     {
-        public List<T> GetRecords<T>(MemoryStream stream) where T : ICsvReadable, new()
-        {
-            var allRecords = new List<T>();
+        var allRecords = new List<T>();
             
-            using var reader = new StreamReader(stream);
-            var parser = new global::FlexableCsvParser.CsvParser(reader, 25);
+        using var reader = new StreamReader(stream);
+        var parser = new global::FlexableCsvParser.CsvParser(reader, 25);
 
-            while (parser.Read())
-            {
-                var item = new T();
-                item.Read(parser.GetString);
-                allRecords.Add(item);
-            }
-
-            return allRecords;
+        while (parser.Read())
+        {
+            var item = new T();
+            item.Read(parser.GetString);
+            allRecords.Add(item);
         }
+
+        return allRecords;
     }
 }
