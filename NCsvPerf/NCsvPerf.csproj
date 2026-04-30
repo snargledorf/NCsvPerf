@@ -56,10 +56,19 @@
     <None Update="TestData\PackageAssets.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Remove="BenchmarkDotNet.Artifacts\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\FlexableCsvParser\FlexableCsvParser\FlexableCsvParser.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="BenchmarkDotNet.Artifacts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="BenchmarkDotNet.Artifacts\**" />
   </ItemGroup>
 
 </Project>
